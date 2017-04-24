@@ -4,10 +4,10 @@ var BoxSDK = require('box-node-sdk');
 var app = express();
 
 var sdk = new BoxSDK({
-  clientID: '82z2pp4h0hg4avykdj75pw5yhej9iczd',
-  clientSecret: 'V9bJ3BM2xTHt9Q1liJ3Lxudca1hpRmoK'
+  clientID: 'Your clientID',
+  clientSecret: 'Your clientSecret'
 });
-var client = sdk.getBasicClient('6awANYQwIPmFhYpCQ2sukQi7koQCMbOH');
+var client = sdk.getBasicClient('Your Token');
 
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
