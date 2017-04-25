@@ -1,0 +1,16 @@
+<div class="container">
+	<h2>This is the Description of the File: </h2>
+	<h3>File name: "{{file.name}}"</h3>
+	<h3>File description: "{{file.description}}"</h3>
+	<br>
+	<h4>File id: "{{file.id}}"</h4>
+	<h4>File size: "{{file.size}}"</h4>
+	<h4>Created by: "{{file.created_by.name}}"</h4>
+	<br>
+	<a href="/updateFileInfo/{{file.id}}">Update</a>
+	<a href="/updateFileInfoRestore/{{file.id}}">Reverse</a>
+	<br>
+	<a href="{{downloadLink}}" download>Download</a>
+	<br>
+	<a href="/deleteFile/{{file.id}}">Delete</a>
+</div>

@@ -11,7 +11,7 @@ gulp.task('default', function() {
 	nodemon({
 		// the script to run the app
 		script: 'app.js',
-		ext: 'js html'
+		ext: 'js html handlebars'
 	}).on('restart', function(){
 		// when the app has restarted, run livereload.
 		gulp.src('app.js')

@@ -1,0 +1,9 @@
+<div class="container">
+	<h2>These are the files inside the folder: </h2>
+	{{#each files}}
+	<div class="col-md-4">
+		<h3>File name: "<a href="/getFileInfo/{{id}}">{{name}}</a>"</h3>
+		<h3>File ID: "{{id}}"</h3>
+	</div>
+	{{/each}}
+</div>
