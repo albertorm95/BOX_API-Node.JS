@@ -20,6 +20,7 @@ var client = sdk.getBasicClient('token');
 
 //Main Index
 app.get('/', function (req, res) {
+	console.log("GET '/'");
 	client.users.get(client.CURRENT_USER_ID, null, function(err, currentUser) {
   	if(err) throw err;
   	res.render('home', {nombre : currentUser.name, tittle : "BOX SDK Node.JS Demo"});
@@ -28,6 +29,7 @@ app.get('/', function (req, res) {
 
 //GET description
 app.get('/getFileInfo/:id', function (req, res){
+	console.log("GET '/getFileInfo/"+req.params.id+"'");
 	client.files.get(req.params.id, null, function(err, file){
 		if(err) throw err;
 		client.files.getDownloadURL(req.params.id, null, function(err, downloadURL){
@@ -39,6 +41,7 @@ app.get('/getFileInfo/:id', function (req, res){
 
 //Update description
 app.get('/updateFileInfo/:id', function (req, res){
+	console.log("GET '/updateFileInfo/"+req.params.id+"'");
 	client.files.update(req.params.id, {description : 'TEST'}, function(err, file){
 		if(err) throw err;
 		res.render('getFileInfo', {file : file, tittle : "Get File Info"});
@@ -47,6 +50,7 @@ app.get('/updateFileInfo/:id', function (req, res){
 
 //Reverse Update
 app.get('/updateFileInfoRestore/:id', function (req, res){
+	console.log("GET '/updateFileInfoRestore/"+req.params.id+"'");
 	client.files.update(req.params.id, {description : ''}, function(err, file){
 		if(err) throw err;
 		res.render('getFileInfo', {file : file, tittle : "Get File Info"});
@@ -55,18 +59,17 @@ app.get('/updateFileInfoRestore/:id', function (req, res){
 
 //Delete File
 app.get('/deleteFile/:id', function (req, res){
+	console.log("GET '/deleteFile/"+req.params.id+"'");
 	client.files.delete(req.params.id, function(err){
 		if(err) throw err;
 		console.log("deleted.");
 	});
-	client.users.get(client.CURRENT_USER_ID, null, function(err, currentUser) {
-		if(err) throw err;
-		res.render('home', {nombre : currentUser.name, tittle : "BOX SDK Node.JS Demo"});
-	});
+	res.redirect('/');
 });
 
 //Get Folder Items
 app.get('/getFolderItems', function(req, res){
+	console.log("GET '/getFolderItems'");
 	client.folders.getItems(
     '24995973944',
     {
@@ -82,15 +85,12 @@ app.get('/getFolderItems', function(req, res){
 
 //Upload File
 app.get('/uploadFile', function(req, res){
-	console.log(req.query);
+	console.log("GET '/uploadFile'");
 	var stream = fs.createReadStream(req.query.path);
 	client.files.uploadFile('24995973944', req.query.name, stream, function(err){
 		if (err) throw err;
 	});
-	client.users.get(client.CURRENT_USER_ID, null, function(err, currentUser) {
-  	if(err) throw err;
-  	res.render('home', {nombre : currentUser.name, tittle : "BOX SDK Node.JS Demo"});
-	});
+	res.redirect('/');
 });
 
 

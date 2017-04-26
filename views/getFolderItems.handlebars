@@ -1,21 +1,26 @@
 <div class="container">
-	<h2>These are the files inside the folder: </h2>
-	{{#each files}}
-	<div class="col-md-4">
-		<h3>File name: "<a href="/getFileInfo/{{id}}">{{name}}</a>"</h3>
-		<h3>File ID: "{{id}}"</h3>
+	<div class="row">
+		<h3>These are the files inside the folder: </h3>
+		{{#each files}}
+		<div class="col-md-4">
+			<p>File name: "<a href="/getFileInfo/{{id}}">{{name}}</a>"</p>
+			<p>File ID: "{{id}}"</p>
+			<hr>
+		</div>
+		{{/each}}
 	</div>
-	{{/each}}
-	<div class="container">
-	<h2>Upload a File into a Folder in BOX: </h2>
-	<form action="#">
-		<h3>File name: </h3>
-		<input id="fileName" type="text" value="" name="name" />
-		<h3>File:</h3>
-		<p>C:\Users\IBM_ADMIN\Proyectos\start2\public\files</p>
-		<input id="filePath" type="text" value="" name="path" />
-		<br><br>
-		<input type="submit" value="Submit" name=""/>
-	</form>
-</div>
+	<div class="row">
+		<h3>Upload a File into a Folder in BOX: </h3>
+		<form action="/uploadFile">
+			<h4>File name: </h4>
+			<input id="fileName" type="text" value="" name="name" />
+			<h4>File:</h4>
+			<p>C:\Users\IBM_ADMIN\Proyectos\BOX_API-Node.JS\public\files\test1.txt</p>
+			<p>C:\Users\IBM_ADMIN\Proyectos\BOX_API-Node.JS\public\files\test2.txt</p>
+			<p>C:\Users\IBM_ADMIN\Proyectos\BOX_API-Node.JS\public\files\test3.txt</p>
+			<input id="filePath" type="text" value="" name="path" />
+			<br><br>
+			<input type="submit" value="Submit" name=""/>
+		</form>
+	</div>
 </div>
